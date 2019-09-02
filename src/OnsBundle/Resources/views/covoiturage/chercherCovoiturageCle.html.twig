@@ -1,0 +1,101 @@
+
+
+
+
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#<head>#}
+    {#<title>Visitors an Admin Panel Category Bootstrap Responsive Website Template | Home :: w3layouts</title>#}
+    {#<meta name="viewport" content="width=device-width, initial-scale=1">#}
+    {#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+    {#<meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,#}
+{#Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />#}
+    {#<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>#}
+    {#<!-- bootstrap-css -->#}
+    {#<link rel="stylesheet" href="{{ asset('bundles/covoiturage/css/bootstrap.min.css')}}" >#}
+    {#<!-- //bootstrap-css -->#}
+    {#<!-- Custom CSS -->#}
+    {#<link href="{{ asset('bundles/covoiturage/css/style.css')}}" rel='stylesheet' type='text/css' />#}
+    {#<link href="{{ asset('bundles/covoiturage/css/style-responsive.css')}}" rel="stylesheet"/>#}
+    {#<!-- font CSS -->#}
+    {#<link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>#}
+    {#<!-- font-awesome icons -->#}
+    {#<link rel="stylesheet" href="{{ asset('bundles/covoiturage/css/font.css')}}" type="text/css"/>#}
+    {#<link href="{{ asset('bundles/covoiturage/css/font-awesome.css')}}" rel="stylesheet">#}
+    {#<link rel="stylesheet" href="{{ asset('bundles/covoiturage/css/morris.css')}}" type="text/css"/>#}
+    {#<!-- calendar -->#}
+    {#<link rel="stylesheet" href="{{ asset('bundles/covoiturage/css/monthly.css')}}">#}
+    {#<!-- //calendar -->#}
+    {#<!-- //font-awesome icons -->#}
+    {#<script src="{{ asset('bundles/covoiturage/js/jquery2.0.3.min.js')}}"></script>#}
+    {#<script src="{{ asset('bundles/covoiturage/js/raphael-min.js')}}"></script>#}
+    {#<script src="{{ asset('bundles/covoiturage/js/morris.js')}}"></script>#}
+    {#<script src="{{ asset('bundles/covoiturage/js/jquery-3.2.1.min.js')}}"></script>#}
+
+
+
+
+
+    {#<meta name="viewport" content="width=device-width, initial-scale=1">#}
+    {#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+    {#<meta name="keywords" content="Emphasize Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,#}
+{#Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />#}
+    {#<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);#}
+        {#function hideURLbar(){ window.scrollTo(0,1); } </script>#}
+    {#<!-- // custom-theme -->#}
+    {#<!--css links-->#}
+    {#<link href="{{ asset('bundles/Etudiant/css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" /><!--bootstrap-->#}
+    {#<link href="{{ asset('bundles/Etudiant/css/font-awesome.css') }}" rel="stylesheet"><!--font-awesome-->#}
+    {#<link href="{{ asset('bundles/Etudiant/css/style.css')}}" rel="stylesheet" type="text/css" media="all" /><!--stylesheet-->#}
+    {#<!--//css links-->#}
+    {#<!--fonts-->#}
+    {#<link href="//fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700" rel="stylesheet">#}
+    {#<link href="//fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet">#}
+
+{#</head>#}
+
+<!--// Main Section \\-->
+        <div class="careplus-main-section">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="careplus-shop careplus-shop-grid">
+                            <ul class="row">
+                                {% for cov in covoiturages %}
+                                    <li class="col-md-4">
+                                        <figure><a href="shop-detail.html"><img src="extra-images/shop-grid-img1.jpg" alt=""><span><i class="fa fa-link"></i><small></small></span></a></figure>
+                                        <div class="careplus-shop-grid-text">
+                                            <h5><a href="shop-detail.html">Covoiturage Numero <i>{{ cov.idcovoiturage }}</i></a></h5>
+                                            <span>Depart: <h7><i>{{ cov.Depart }}</i></h7></span>
+                                            <span>Arrive: <h7><i>{{ cov.Arrive }}</i></h7></span>
+                                            <span>Date Depare: <h7><i>{{ cov.temps|date('Y-m-d') }}</i></h7></span>
+
+
+                                            {% if cov.nbrRes==cov.nbrPlace %}
+                                                <span style="margin-top: 10px;"><h7><i>ce covoiturage est comple</i></h7></span>
+                                            {% else %}
+                                                {#<a  href="{ path('covoiturage_res', { 'idcovoiturage': cov.idcovoiturage }) }}" class="careplus-readmore-btn">Reserver <span></span></a>#}
+                                                <button class="careplus-readmore-btn" type="button" onclick="reserver({{ cov.idcovoiturage }})"><label >reserver</label></button>
+                                            {% endif %}
+                                            <button class="btn-success" type="button" onclick="consulter({{ cov.idcovoiturage }})"><label class="consult">consulter</label></button>
+                                            {#<a style="margin-left:10px; " href="{ path('covoiturage_show', { id:cov.idcovoiturage }) }}" class="careplus-readmore-btn">Consulter <span></span></a>#}
+
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <!--// Pagination \\-->
+                        <div class="careplus-pagination">
+                            {{ knp_pagination_render(covoiturages) }}
+                        </div>
+                        <!--// Pagination \\-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+

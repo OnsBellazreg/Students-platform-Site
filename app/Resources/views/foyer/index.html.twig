@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Foyers list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Email</th>
+                <th>Nomfoyer</th>
+                <th>Dateab</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for foyer in foyers %}
+            <tr>
+                <td><a href="{{ path('foyer_show', { 'id': foyer.id }) }}">{{ foyer.id }}</a></td>
+                <td>{{ foyer.nom }}</td>
+                <td>{{ foyer.prenom }}</td>
+                <td>{{ foyer.username }}</td>
+                <td>{{ foyer.password }}</td>
+                <td>{{ foyer.email }}</td>
+                <td>{{ foyer.nomfoyer }}</td>
+                <td>{% if foyer.dateab %}{{ foyer.dateab|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('foyer_show', { 'id': foyer.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('foyer_edit', { 'id': foyer.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('foyer_new') }}">Create a new foyer</a>
+        </li>
+    </ul>
+{% endblock %}

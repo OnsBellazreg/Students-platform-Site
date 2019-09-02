@@ -1,0 +1,12 @@
+foyer_list:
+  path:     /listFoyer
+  defaults: { _controller: "OnsBundle:Foyer:index" }
+  methods:  GET
+
+foyer_res:
+  path:     /reserverFoyer
+  defaults: { _controller: "OnsBundle:Foyer:reserver" }
+
+foyer_resu:
+  path:     /resultaFoyer
+  defaults: { _controller: "OnsBundle:Foyer:Resulta" }

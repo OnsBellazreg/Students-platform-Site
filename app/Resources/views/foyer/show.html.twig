@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Foyer</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ foyer.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ foyer.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ foyer.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ foyer.username }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ foyer.password }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ foyer.email }}</td>
+            </tr>
+            <tr>
+                <th>Nomfoyer</th>
+                <td>{{ foyer.nomfoyer }}</td>
+            </tr>
+            <tr>
+                <th>Dateab</th>
+                <td>{% if foyer.dateab %}{{ foyer.dateab|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('foyer_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('foyer_edit', { 'id': foyer.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

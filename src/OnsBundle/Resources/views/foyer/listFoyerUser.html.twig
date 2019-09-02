@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+
+
+
+    <div class="careplus-subheader">
+        <div class="careplus-subheader-image">
+            <span class="careplus-dark-transparent"></span>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Esprit Entre'aide</h1>
+                        <span>Bienvenue Sur Notre Plateform</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="careplus-breadcrumb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul>
+                            <li><a href="#">Homepage</a></li>
+                            <li>Trouvez Un Covoiturage</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// SubHeader \\-->
+
+    <!--// Main Content \\-->
+    <div class="careplus-main-content">
+
+        <!--// Main Section \\-->
+        <div class="careplus-main-section">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="careplus-shop careplus-shop-grid">
+                            <ul class="row">
+                                {% for foyer in foyers %}
+                                    <li class="col-md-4">
+                                        <figure><a href="shop-detail.html"><img src="extra-images/shop-grid-img1.jpg" alt=""><span><i class="fa fa-link"></i><small></small></span></a></figure>
+                                        <div class="careplus-shop-grid-text">
+                                            <h5><a href="shop-detail.html">Nom Foyer:  <i>{{ foyer.nomfoyer }}</i></a></h5>
+                                            <span>Adresse: <h7><i>{{ foyer.adresse }}</i></h7></span>
+                                            <span>Nombre de Places: <h7><i>{{ foyer.nbrPlace }}</i></h7></span>
+                                            <span>Email: <h7><i>{{ foyer.email }}</i></h7></span>
+                                            <span>Prix: <h7><i>{{ foyer.prix }}</i></h7></span>
+                                            <span>Responsable: <h7><i>{{ foyer.responsable }}</i></h7></span>
+
+
+                                           {% if foyer.nbrPlace>foyer.NbrDem  %}
+                                            <a href="{{ path('foyer_res', { 'idf': foyer.idFoyer }) }}" class="careplus-readmore-btn">Demander <span></span></a>
+                                            {% else %}
+                                                <span>Etat :<h7><i>Complet</i></h7></span>
+                                                {% endif %}
+
+
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+
+
+                        </div>
+                        <!--// Pagination \\-->
+                        <div class="careplus-pagination">
+                            {{ knp_pagination_render(foyers) }}
+                        </div>
+                        <!--// Pagination \\-->
+
+                        <div id="disqus_thread"></div>
+                        <script>
+
+                            var disqus_config = function () {
+                                this.page.url = 'http://localhost/baseweb/web/app_dev.php/covoiturage/' ; // Here you need to add the identifier of this page, for example if is a page of a blog, the identifier would be : /blog/april/how-to-breath/12
+                                this.page.identifier = 'user'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                            };
+
+                            (function() {  // DON'T EDIT BELOW THIS LINE
+                                var d = document, s = d.createElement('script');
+
+                                s.src = '////espritfoyer.disqus.com/embed.js';
+
+
+                                s.setAttribute('data-timestamp', +new Date());
+                                (d.head || d.body).appendChild(s);
+                            })();
+                        </script>
+                        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

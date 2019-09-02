@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+
+
+
+
+    <div class="careplus-subheader">
+        <div class="careplus-subheader-image">
+            <span class="careplus-dark-transparent"></span>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>esprit entre'aide</h1>
+                        <span>Bienvenue Sur Notre Plateform</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="careplus-breadcrumb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul>
+                            <li><a href="#">Homepage</a></li>
+                            <li>Resultats Foyer</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// SubHeader \\-->
+
+    <!--// Main Content \\-->
+    <div class="careplus-main-content">
+
+        <!--// Main Section \\-->
+        <div class="careplus-main-section">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="careplus-shop careplus-shop-grid">
+                            <ul class="row">
+                                {% for d in demande %}
+                                    <li class="col-md-4">
+                                        <figure><a href="shop-detail.html"><img src="extra-images/shop-grid-img1.jpg" alt=""><span><i class="fa fa-link"></i><small></small></span></a></figure>
+                                        <div class="careplus-shop-grid-text">
+                                            <h5><a href="shop-detail.html"><i>{{ d.idFoyer.nomfoyer }}</i></a></h5>
+                                            <span>Nom Etudiant: <h7><i>{{ d.idetudiant.username }}</i></h7></span>
+                                            <span>Adresse: <h7><i>{{ d.idFoyer.adresse }}</i></h7></span>
+                                            <span>Nombre de Places: <h7><i>{{ d.idFoyer.nbrPlace }}</i></h7></span>
+                                            <span>Email: <h7><i>{{ d.idFoyer.email }}</i></h7></span>
+                                            <span>Prix: <h7><i>{{ d.idFoyer.prix }}</i></h7></span>
+                                            <span>Responsable: <h7><i>{{ d.idFoyer.responsable }}</i></h7></span>
+
+
+                                            {% if d.status == 1 %}
+                                                <span>Reponse: <h7><i>Accepte</i></h7></span>
+                                            {% elseif d.status == -1 %}
+                                                <span>Reponse: <h7><i>Refuse</i></h7></span>
+                                            {% else %}
+                                                <span>Reponse: <h7><i>En cours</i></h7></span>
+
+                                            {% endif %}
+
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <!--// Pagination \\-->
+                        <div class="careplus-pagination">
+                            {{ knp_pagination_render(demande) }}
+                        </div>
+                        <!--// Pagination \\-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- //calendar -->
+
+{% endblock %}

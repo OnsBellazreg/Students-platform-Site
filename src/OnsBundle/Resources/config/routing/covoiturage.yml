@@ -1,0 +1,41 @@
+covoiturage_index:
+  path:     /
+  defaults: { _controller: "OnsBundle:Covoiturage:index" }
+  methods:  GET
+
+covoiturage_show:
+  path:     /show/{id}
+  defaults: { _controller: "OnsBundle:Covoiturage:consulterCovoiturage" }
+  methods:  GET
+
+covoiturage_new:
+  path:     /new
+  defaults: { _controller: "OnsBundle:Covoiturage:new" }
+  methods:  [GET, POST]
+
+covoiturage_edit:
+  path:     /edit/{id}
+  defaults: { _controller: "OnsBundle:Covoiturage:edit" }
+
+covoiturage_delete:
+  path:     /delete/{id}
+  defaults: { _controller: "OnsBundle:Covoiturage:delete" }
+
+covoiturage_res:
+  path:     /reserverCovoiturage
+  defaults: { _controller: "OnsBundle:Covoiturage:reserver" }
+user_integration_chercherCleCovoiturage:
+  path:     /chercherCleCovoiturage.html
+  defaults: { _controller: OnsBundle:Covoiturage:chercherCleCovoiturage }
+
+covoiturage_moncov:
+  path:     /monCovoiturage
+  defaults: { _controller: OnsBundle:Covoiturage:mesCovoiturage }
+
+reservation_monres:
+  path:     /monReservation
+  defaults: { _controller: OnsBundle:Covoiturage:mesReservation }
+
+reservation_cancel:
+  path:     /cancel/{id}
+  defaults: { _controller: "OnsBundle:Covoiturage:cancel" }

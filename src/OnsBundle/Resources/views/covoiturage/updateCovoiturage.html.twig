@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+    <div class="careplus-subheader">
+        <div class="careplus-subheader-image">
+            <span class="careplus-dark-transparent"></span>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Esprit Entre'aide</h1>
+                        <span>Bienvenue Sur Notre Plateform</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="careplus-breadcrumb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul>
+                            <li><a href="#">Homepage</a></li>
+                            <li>Modification</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// SubHeader \\-->
+
+    <!--// Main Content \\-->
+    <div class="careplus-main-content">
+
+        <!--// Main Section \\-->
+        <div class="careplus-main-section">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="careplus-appointment-request-form">
+                            <form id="signupForm" method="POST" action="{{ path('covoiturage_edit',{id:covoiturage.idcovoiturage}) }}">
+
+                                <ul>
+                                    <li class="careplus-appointment-fullform"> <span>Destination:</span> </li>
+                                    <li>
+                                        <input value="{{ covoiturage.Depart }}" name="Depart"  tabindex="0" type="text" required>
+                                    </li>
+                                    <li>
+                                        <input value="{{ covoiturage.Arrive }}" name="Arrive" onblur="if(this.value == '') { this.value ='Middle Name'; }" onfocus="if(this.value =='Middle Name') { this.value = ''; }" tabindex="0" type="text" required>
+                                    </li>
+
+                                    <li class="careplus-appointment-fullform"> <span>Num-Tel:</span> </li>
+                                    <li>
+                                        <input value="{{ covoiturage.NumTel }}" name="NumTel" onblur="if(this.value == '') { this.value =''; }" onfocus="if(this.value =='') { this.value = ''; }" tabindex="0" type="number" required>
+                                    </li>
+                                    <li class="careplus-appointment-fullform"> <span>Type:</span> </li>
+                                    <li class="careplus-appointment-fullform">
+                                        <input value="{{ covoiturage.type }}" name="type" onblur="if(this.value == '') { this.value ='Street Address'; }" onfocus="if(this.value =='Street Address') { this.value = ''; }" tabindex="0" type="text" required>
+                                    </li>
+
+                                    <li class="careplus-appointment-fullform"> <span>Date Depart:</span> </li>
+                                    <li class="careplus-appointment-fullform">
+                                        <input value="{{ covoiturage.temps }}" name="temps" id="datetoday" onblur="if(this.value == '') { this.value ='Street Address'; }" onfocus="if(this.value =='Street Address') { this.value = ''; }" tabindex="0" type="date" required>
+                                    </li>
+                                    <script>
+                                        var today = new Date();
+                                        var dd = today.getDate();
+                                        var mm = today.getMonth()+1;
+                                        var yyyy = today.getFullYear();
+                                        if (dd<10){dd='0'+dd}
+                                        if (mm<10){mm='0'+mm}
+                                        today = yyyy + '-' + mm + '-' + dd;
+                                        document.getElementById("datetoday").min=today;
+                                    </script>
+
+                                    <li class="careplus-appointment-fullform"> <span>Prix:</span> </li>
+                                    <li>
+                                        <input value="{{ covoiturage.prix }}" name="prix" onblur="if(this.value == '') { this.value ='Email'; }" onfocus="if(this.value =='Email') { this.value = ''; }" tabindex="0" type="number" required>
+                                    </li>
+
+                                    <li class="careplus-appointment-fullform"> <span>Nombre Places:</span> </li>
+                                    <li>
+                                        <input value="{{ covoiturage.NumTel }}" name="nombrePlaces" onblur="if(this.value == '') { this.value ='Email'; }" onfocus="if(this.value =='') { this.value = ''; }" tabindex="0" type="number" required>
+                                    </li>
+                                    <div></div>
+                                    <li><label><input value="Submit Now" type="submit"><span></span></label></li>
+                                </ul>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--// Main Section \\-->
+
+    </div>
+
+{% else %}
+    <h1 style="background-color:Tomato;">vous devez vous connecter pour continuer </h1>
+    <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+{% endif %}
+
+{% endblock %}

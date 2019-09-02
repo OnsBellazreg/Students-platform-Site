@@ -1,0 +1,24 @@
+colocation_index:
+    path:     /
+    defaults: { _controller: "MyBundle:Colocation:index" }
+    methods:  GET
+
+colocation_show:
+    path:     /{id}/show
+    defaults: { _controller: "MyBundle:Colocation:show" }
+    methods:  GET
+
+colocation_new:
+    path:     /new
+    defaults: { _controller: "MyBundle:Colocation:new" }
+    methods:  [GET, POST]
+
+colocation_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MyBundle:Colocation:edit" }
+    methods:  [GET, POST]
+
+colocation_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MyBundle:Colocation:delete" }
+    methods:  DELETE

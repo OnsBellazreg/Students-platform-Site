@@ -1,0 +1,35 @@
+admin_homepage:
+    path:     /listFoyer
+    defaults: { _controller: OnsBundle:Foyer:listFoyer }
+
+admin_ajoutfoyer:
+    path:     /newFoyer
+    defaults: { _controller: OnsBundle:Foyer:new }
+
+admin_listFoyer:
+    path:     /listFoyer
+    defaults: { _controller: OnsBundle:Foyer:listFoyer }
+
+admin_supprimer_foyer:
+    path:     /delete/{id}
+    defaults: { _controller: OnsBundle:Foyer:delete }
+
+admin_editFoyer:
+    path:     /editFoyer/{id}
+    defaults: { _controller: OnsBundle:Foyer:edit }
+
+admin_listDemande:
+    path:     /listDemande
+    defaults: { _controller: AdminBundle:Default:listDemande }
+
+admin_accept:
+    path:     /accepte
+    defaults: { _controller: AdminBundle:Default:accepter }
+
+admin_refuse:
+    path:     /refuse
+    defaults: { _controller: AdminBundle:Default:refuser }
+
+admin_search_foyer:
+    path:     /search
+    defaults: { _controller: AdminBundle:Default:search }

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Covoiturages list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idcovoiturage</th>
+                <th>Depart</th>
+                <th>Arrive</th>
+                <th>Type</th>
+                <th>Prix</th>
+                <th>Nbrplace</th>
+                <th>Numtel</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for covoiturage in covoiturages %}
+            <tr>
+                <td><a href="{{ path('covoiturage_show', { 'idcovoiturage': covoiturage.idcovoiturage }) }}">{{ covoiturage.idcovoiturage }}</a></td>
+                <td>{{ covoiturage.Depart }}</td>
+                <td>{{ covoiturage.Arrive }}</td>
+                <td>{{ covoiturage.Type }}</td>
+                <td>{{ covoiturage.Prix }}</td>
+                <td>{{ covoiturage.nbrPlace }}</td>
+                <td>{{ covoiturage.NumTel }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('covoiturage_show', { 'idcovoiturage': covoiturage.idcovoiturage }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('covoiturage_edit', { 'idcovoiturage': covoiturage.idcovoiturage }) }}">edit</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('covoiturage_res', { 'idcovoiturage': covoiturage.idcovoiturage }) }}">Reserver</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('covoiturage_new') }}">Create a new covoiturage</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,83 @@
+
+
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+<div class="careplus-subheader">
+    <div class="careplus-subheader-image">
+        <span class="careplus-dark-transparent"></span>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Esprit Entre'aide</h1>
+                    <span>Bienvenue Sur Notre Plateform</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="careplus-breadcrumb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul>
+                        <li><a href="#">Homepage</a></li>
+                        <li>Vos Covoiturages</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--// SubHeader \\-->
+
+<!--// Main Content \\-->
+<div class="careplus-main-content">
+
+    <!--// Main Section \\-->
+    <div class="careplus-main-section">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="careplus-shop careplus-shop-grid">
+                        <ul class="row">
+                            {% for cov in covoiturage %}
+                            <li class="col-md-4">
+                                <figure><a href="shop-detail.html"><img src="extra-images/shop-grid-img1.jpg" alt=""><span><i class="fa fa-link"></i><small></small></span></a></figure>
+                                <div class="careplus-shop-grid-text">
+                                    <h5><a href="shop-detail.html">Covoiturage Numero <i>{{ cov.idcovoiturage }}</i></a></h5>
+                                    <span>Depart: <h7><i>{{ cov.Depart }}</i></h7></span>
+                                    <span>Arrive: <h7><i>{{ cov.Arrive }}</i></h7></span>
+                                    <span>Date Depare: <h7><i>{{ cov.temps|date('Y-m-d') }}</i></h7></span>
+                                    <span>Type: <h7><i>{{ cov.Type }}</i></h7></span>
+                                    <span>Prix: <h7><i>{{ cov.Prix }}</i></h7></span>
+                                    <span>Nombre de places: <h7><i>{{ cov.nbrPlace }}</i></h7></span>
+
+
+                                    <a id="1" href="{{ path('covoiturage_edit', { id:cov.idcovoiturage }) }}" class="careplus-readmore-btn">Modifier <span></span></a>
+                                    <a style="margin-left:10px; " href="{{ path('covoiturage_delete', { id:cov.idcovoiturage }) }}" class="careplus-readmore-btn">Supprimer <span></span></a>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <!--// Pagination \\-->
+                    <div class="careplus-pagination">
+                        {{ knp_pagination_render(covoiturage) }}
+                    </div>
+                    <!--// Pagination \\-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{#</body>#}
+{#</html>#}
+
+
+
+

@@ -1,0 +1,39 @@
+admin:
+    resource: "@AdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+ons_foyer:
+    resource: "@OnsBundle/Resources/config/routing/foyer.yml"
+    prefix:   /foyer
+
+ons_covoiturage:
+    resource: "@OnsBundle/Resources/config/routing/covoiturage.yml"
+    prefix:   /covoiturage
+
+fos_comment_api:
+    type: rest
+    resource: "@FOSCommentBundle/Resources/config/routing.yml"
+    prefix: /api
+    defaults: { _format: html }
+
+ons:
+    resource: "@OnsBundle/Resources/config/routing.yml"
+
+my:
+    resource: "@MyBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+#user:
+#    resource: "@UserBundle/Resources/config/routing.yml"
+#    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+sa_show:
+    path:     /aa
+    defaults: { _controller: "app/Resources/views/default/log" }
+    methods:  GET
